@@ -28,7 +28,6 @@ function NavigationBar() {
             if(linkID == currentNavLink)
                 link.classList.add(styles.navBar_link_active);
         })
-
     }, [currentNavLink])
 
     return(

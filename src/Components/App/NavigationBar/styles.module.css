@@ -48,10 +48,11 @@
     cursor: pointer;
 }
 .navBar_link{
-    height: 96px;
+    height: 93px;
     font-weight: 400;
     display: flex;
     align-items: center;
+    border-bottom: 3px solid transparent;
 }
 /* this is where i left off*/
 .navBar_link_active {
