@@ -1,0 +1,29 @@
+.navBar{
+    width: 1385px;
+    height: 96px;
+    display: flex;
+    gap: 64px;
+    align-items: center;
+    margin: 40px auto 0px auto;
+}
+
+.navBar_logo{
+    width: 48px;
+    object-fit: contain;
+}
+
+.navBar_line{
+    width: 473px;
+    background-color: white;
+}
+
+.navBar_linkContainer{
+    width: 830px;
+    height: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 165px 0px 123px;
+    background-color: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(40.7742px);
+}
