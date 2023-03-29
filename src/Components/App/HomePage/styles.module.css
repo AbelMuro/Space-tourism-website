@@ -1,0 +1,100 @@
+.home{
+    width: 1110px;
+    display: flex;
+    justify-content: space-between;
+    margin: 251px auto 251px auto;
+
+}
+
+.home_messageContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.home_messageContainer_titleOne{
+    font-family: var(--font-barlow-condensed);
+    font-size: var(--h5-font-size);
+    font-weight: var(--h5-font-weight);
+    line-height: var(--h5-line-height);
+    letter-spacing: var(--h5-letter-spacing);
+    color: #D0D6F9;
+}
+
+.home_messageContainer_titleTwo{
+    font-family: var(--font-bellefair);
+    font-size: var(--h1-font-size);
+    font-weight: var(--h1-font-weight);
+    line-height: var(--h1-line-height);
+    color: white
+}
+
+.home_messageContainer_desc{
+    font-family: var(--font-barlow);
+    font-size: var(--body-font-size);
+    line-height: var(--body-line-height);
+    color: #D0D6F9;
+    width: 444px;
+}
+
+.home_exploreButton{
+    align-self: flex-end;
+    background-color: white;
+    border-radius: 100%;
+    width: 274px;
+    height: 274px;
+    border: none;
+    font-family: var(--font-bellefair);
+    font-size: 32px;
+    line-height: 36.67px;
+    letter-spacing: 2px;
+    font-weight: 400;
+    color: #0b0d17;
+    cursor: pointer;
+}
+
+.home_exploreButton:hover{
+    outline: 88px solid rgba(255, 255, 255, 0.1); 
+}
+
+@media(max-width: 1150px){
+    .home{
+        width: 90%;
+    }
+}
+
+@media(max-width: 900px){
+    .home_messageContainer_titleOne{
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 3.38px;
+    }
+    .home_messageContainer_titleTwo{
+        line-height: 150px;
+    }
+
+    .home_messageContainer_desc{
+        font-size: 16px;
+        line-height: 28px;
+    }
+
+    .home_exploreButton{
+        width: 242px;
+        height: 242px;
+        font-size: 32px;
+        line-height: 36.67px;
+        letter-spacing: 2px;
+    }
+}
+
+@media(max-width: 768px){
+    .home{
+        margin-top: 106px;
+        flex-direction: column;
+        gap: 156px;
+        align-items: center;
+    }
+    .home_exploreButton{
+        align-self: center;
+    }
+}

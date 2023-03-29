@@ -32,7 +32,7 @@ function NavigationBar() {
 
     return(
         <header className={styles.navBar}>
-            <img src={icons['logo']} className={styles.navBar_logo}/>
+            <img src={icons['logo']} className={styles.navBar_logo} alt='logo'/>
             
             <nav className={styles.navBar_linkContainer}>
                 <hr className={styles.navBar_line}/>
