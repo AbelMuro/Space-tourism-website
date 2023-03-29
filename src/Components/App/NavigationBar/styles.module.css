@@ -2,7 +2,7 @@
     width: 1385px;
     height: 96px;
     display: flex;
-    gap: 64px;
+    justify-content: space-between;
     align-items: center;
     margin: 40px auto 0px auto;
 }
@@ -10,11 +10,7 @@
 .navBar_logo{
     width: 48px;
     object-fit: contain;
-}
-
-.navBar_line{
-    width: 473px;
-    background-color: white;
+    margin-right: 64px;
 }
 
 .navBar_linkContainer{
@@ -23,7 +19,50 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 50px;
     padding: 0px 165px 0px 123px;
     background-color: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(40.7742px);
+    position: relative;
+}
+
+.navBar_line{
+    width: 473px;
+    height: 1px;
+    background-color: white;
+    opacity: 0.25;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: -443px;
+}
+
+.navBar_link, .navBar_link_title {
+    color: white;
+    font-family: var(--font-barlow-condensed);
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 2.7px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.navBar_link{
+    height: 96px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+/* this is where i left off*/
+.navBar_link_active {
+    border-bottom: 3px solid white;
+}
+
+.navBar_link:not(.navBar_link_active):hover{
+    border-bottom: 3px solid rgba(255, 255, 255, 0.5)
+}
+
+.navBar_link_title{
+    font-weight: 700;
+    pointer-events: none;
 }

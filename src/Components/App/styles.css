@@ -8,9 +8,18 @@
     src: url('./FontFiles/Bellefair-Regular.ttf');
 }
 
+@font-face{
+    font-family: 'barlow condensed';
+    src: url('./FontFiles/BarlowCondensed-Regular.ttf');
+}
+
+
 body{
     min-height: 100vh;
     background-color: #080D17;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
 }
 
 * {
@@ -22,6 +31,7 @@ body{
 
 :root{
     --font-barlow: 'barlow';
+    --font-barlow-condensed: 'barlow condensed';
     --font-bellefair: 'bellefair';
 
     --h1-font-size: 150px;
