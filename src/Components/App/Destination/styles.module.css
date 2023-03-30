@@ -4,7 +4,7 @@
     justify-content: space-between;
     width: 1110px;
     gap: 97px;
-    margin: auto;
+    margin: 76px auto 112px auto;
 }
 
 .container_title {
@@ -54,13 +54,67 @@
     border: none;
     border-bottom: 3px solid transparent;
     background-color: transparent;
-    color: white;
+    color: #D0D6F9;
     font-family: var(--font-barlow-condensed);
     font-weight: 400;
     line-height: 19.2px;
     letter-spacing: 2.7px;
 }
 
-.content_button:hover{
+.content_button:not(.content_button_active):hover{
     border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+.content_button_active{
+    color: white; 
+    border-bottom-color: rgb(255, 255, 255);
+}
+
+.content_title{
+    font-family: var(--font-bellefair);
+    font-weight: var(--h2-font-weight);
+    font-size: var(--h2-font-size);
+    line-height: var(--h2-line-height);
+    color: white;
+}
+
+.content_desc{
+    font-family: var(--font-barlow);
+    font-size: var(--body-font-size);
+    font-weight: var(--body-font-weight);
+    line-height: var(--body-line-height);
+    color: #D0D6F9;
+}
+
+.content_line{
+    border-color: #383B4B;
+}
+
+.content_planetMisc{
+    display: flex;
+    justify-content: space-between;
+    gap: 79px;
+}
+
+.content_planetDistance, .content_planetTravelTime{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.content_planetDistance_title, .content_planetTravelTime_title{
+    font-family: var(--font-barlow-condensed);
+    font-size: 14px;
+    line-height: 16.8px;
+    letter-spacing: 2.36px;
+    color: #D0D6F9;
+}
+
+.content_planetDistance_desc, .content_planetTravelTime_desc{
+    font-family: var(--font-bellefair);
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 32.09px;
+    color: white;
 }

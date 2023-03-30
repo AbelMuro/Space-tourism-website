@@ -1,13 +1,48 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './styles.module.css';
+import planetData from './PlanetData';
 import images from './images';
 
+
+/* i need to import useMediaQuery and change the background image for tablet and mobile*/
 function Destination() {
+    const [destination, setDestination] = useState('MOON');
+    const [description, setDescription] = useState(planetData[`MOON desc`]);
+    const [distance, setDistance] = useState(planetData[`MOON distance`]);
+    const [travelTime, setTravelTime] = useState(planetData[`MOON travel time`]);
+
+
+    const handleDestination = (e) => {
+        const currentDest = e.target.id;
+        setDestination(currentDest);
+        setDescription(planetData[`${currentDest} desc`]);
+        setDistance(planetData[`${currentDest} distance`]);
+        setTravelTime(planetData[`${currentDest} travel time`]);
+    }
 
     useEffect(() => {
         const body = document.querySelector('body');
         body.style.backgroundImage = `url(${images['backgroundImageDesktop']})`;
     }, [])
+
+    useEffect(() => {
+        const allButtons = document.querySelectorAll('.' + styles.content_button);
+        allButtons.forEach((button) => {
+            button.classList.remove(styles.content_button_active);
+        })
+    }, [destination]);
+
+    useEffect(() => {
+        const allButtons = document.querySelectorAll('.' + styles.content_button);
+        allButtons.forEach((button) => {
+            const buttonID = button.id;
+            if(buttonID == destination) 
+                button.classList.add(styles.content_button_active);
+        })
+
+    }, [destination])
+
+
 
     return(
         <main className={styles.container}>
@@ -18,30 +53,27 @@ function Destination() {
                 PICK YOUR DESTINATION
             </h5>
             <section className={styles.content}>
-                <img className={styles.content_planet} src={images['moon']}/>
+                <img className={styles.content_planet} src={images[destination]}/>
                 <div className={styles.content_planetInfo}>
                     <nav className={styles.content_buttons}>
-                        <button className={styles.content_button}>
+                        <button className={styles.content_button} onClick={handleDestination} id='MOON'>
                             MOON
                         </button>
-                        <button className={styles.content_button}>
+                        <button className={styles.content_button} onClick={handleDestination} id='MARS'>
                             MARS
                         </button>
-                        <button className={styles.content_button}>
+                        <button className={styles.content_button} onClick={handleDestination} id='EUROPA'>
                             EUROPA
                         </button>
-                        <button className={styles.content_button}>
+                        <button className={styles.content_button} onClick={handleDestination} id='TITAN'>
                             TITAN
                         </button>
                     </nav>
                     <h2 className={styles.content_title}>
-                        MOON
+                        {destination}
                     </h2>
                     <p className={styles.content_desc}>
-                        See our planet as you’ve never seen it before. 
-                        A perfect relaxing trip away to help regain perspective 
-                        and come back refreshed. While you’re there, take in some 
-                        history by visiting the Luna 2 and Apollo 11 landing sites.
+                        {description}
                     </p>
                     <hr className={styles.content_line}/>
                     <div className={styles.content_planetMisc}>
@@ -50,15 +82,15 @@ function Destination() {
                                 AVG. DISTANCE
                             </h6>
                             <p className={styles.content_planetDistance_desc}>
-                                384,400 km
+                                {distance}
                             </p>                            
                         </div>
                         <div className={styles.content_planetTravelTime}>
                             <h6 className={styles.content_planetTravelTime_title}>
-                                Est. travel time
+                                EST. TRAVEL TIME
                             </h6>
                             <p className={styles.content_planetTravelTime_desc}>
-                                3 days
+                                {travelTime}
                             </p>                            
                         </div>
                     </div>
