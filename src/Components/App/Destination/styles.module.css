@@ -1,0 +1,50 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 1110px;
+    gap: 97px;
+    margin: auto;
+}
+
+.container_title {
+    display: flex;
+    justify-content: space-between;
+    width: 382px;
+    font-family: var(--font-barlow-condensed);
+    font-size: var(--h5-font-size);
+    font-weight: var(--h5-font-weight);
+    letter-spacing: var(--h5-letter-spacing);
+    color: white;
+}
+
+.container_title_number{
+    font-family: var(--font-barlow-condensed-bold);
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.content{
+    width: 1047px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.content_planet{
+    width: 445px;
+    object-fit: contain;
+}
+
+.content_planetInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 472px;
+    width: 445px;
+}
+
+
+.content_buttons{
+
+}

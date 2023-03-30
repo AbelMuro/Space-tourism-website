@@ -48,9 +48,12 @@ function NavigationBar() {
         })
     }, [currentNavLink])
 
+    useEffect(() => {
+        setDisplayMobileMenu(false);
+    }, [currentNavLink])
+
 //navigating to the page that the user requested
     useEffect(() => {
-        console.log(currentNavLink);
         if(currentNavLink == 'HOME')
             navigate('/');
         else if(currentNavLink == 'DESTINATION')
