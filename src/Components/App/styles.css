@@ -12,6 +12,10 @@
     font-family: 'barlow condensed';
     src: url('./FontFiles/BarlowCondensed-Regular.ttf');
 }
+@font-face{
+    font-family: 'barlow condensed bold';
+    src: url('./FontFiles/BarlowCondensed-Bold.ttf');
+}
 
 
 body{
@@ -21,6 +25,7 @@ body{
     background-repeat: no-repeat;
     background-position: right;
     background-size: cover;
+    overflow: hidden;
 }
 
 * {
@@ -33,6 +38,7 @@ body{
 :root{
     --font-barlow: 'barlow';
     --font-barlow-condensed: 'barlow condensed';
+    --font-barlow-condensed-bold: 'barlow condensed bold';
     --font-bellefair: 'bellefair';
 
     --h1-font-size: 150px;

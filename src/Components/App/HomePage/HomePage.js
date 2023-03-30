@@ -4,15 +4,21 @@ import styles from './styles.module.css';
 import images from './images'
 
 
-/* i will need to load the background images for tablet and mobile in a useEFFECT*/
 function HomePage() {
     const tablet = useMediaQuery('(max-width: 768px)');
     const mobile = useMediaQuery('(max-width: 600px)')
 
     useEffect(() => {
         const body = document.querySelector('body');
-        body.style.backgroundImage = `url(${images['earthBackground']})`;
-    }, [])
+        if(mobile)
+            body.style.backgroundImage = `url(${images['mobileEarthBackground']})`
+        else if(tablet)
+            body.style.backgroundImage = `url(${images['tabletEarthBackground']})`
+        else
+            body.style.backgroundImage = `url(${images['earthBackground']})`
+        
+        
+    }, [mobile, tablet])
 
     return(
         <main className={styles.home}>
