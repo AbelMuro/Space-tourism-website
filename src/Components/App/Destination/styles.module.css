@@ -43,8 +43,24 @@
     height: 472px;
     width: 445px;
 }
-
-
 .content_buttons{
+    display: flex;
+    gap: 35px;
+}
 
+.content_button{
+    cursor: pointer;
+    height: 31px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background-color: transparent;
+    color: white;
+    font-family: var(--font-barlow-condensed);
+    font-weight: 400;
+    line-height: 19.2px;
+    letter-spacing: 2.7px;
+}
+
+.content_button:hover{
+    border-bottom-color: rgba(255, 255, 255, 0.5);
 }
