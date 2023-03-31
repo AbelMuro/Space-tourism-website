@@ -37,7 +37,7 @@
 }
 
 .content_crewImage{
-    width: 568.07px;
+    height: 712px;
     object-fit: contain;
 }
 
@@ -71,12 +71,12 @@
 
 .content_crewInfo_desc{
     width: 444px;
+    height: 233px;
     font-family: var(--font-barlow);
     font-size: var(--body-font-size);
     line-height: var(--body-line-height);
     font-weight: var(--body-font-weight);
     color: #D0D6F9;
-    margin-bottom: 105px;
 }
 
 .content_crewInfo_nav{
