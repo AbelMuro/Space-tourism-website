@@ -31,6 +31,7 @@ function NavigationBar() {
         navLink.style[mobile ? 'borderRight'  : 'borderBottom'] = '';
     }
 
+//this will 'slide in' the mobile menu when the user clicks on the hamburger icon
     useEffect(() => {
         const menu = document.querySelector('.' + styles.navBar_menu);
 
