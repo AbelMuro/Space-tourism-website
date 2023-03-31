@@ -18,6 +18,19 @@ function NavigationBar() {
         setDisplayMobileMenu(!displayMobileMenu);
     }
 
+    const handleEnter = (e) => {
+        const navLink = e.target;
+        if(navLink.classList.contains(styles.navBar_link_active))
+            return;
+        else
+            navLink.style[mobile ? 'borderRight'  : 'borderBottom'] = '3px solid rgba(255, 255, 255, 0.5)';
+    }
+
+    const handleLeave = (e) => {
+        const navLink = e.target;
+        navLink.style[mobile ? 'borderRight'  : 'borderBottom'] = '';
+    }
+
     useEffect(() => {
         const menu = document.querySelector('.' + styles.navBar_menu);
 
@@ -58,6 +71,8 @@ function NavigationBar() {
             navigate('/');
         else if(currentNavLink == 'DESTINATION')
             navigate('/destination');
+        else if(currentNavLink == 'CREW')
+            navigate('/crew');
         
     }, [currentNavLink])
 
@@ -69,28 +84,28 @@ function NavigationBar() {
             <nav className={styles.navBar_menu}>
                     {mobile ? <img className={styles.navBar_closeIcon} src={icons['closeIcon']} onClick={handleMobileMenu}/> : <></>}
                     <hr className={styles.navBar_line}/>
-                    <a className={styles.navBar_link} onClick={handleNavLink} id='HOME'>
+                    <a className={styles.navBar_link} onClick={handleNavLink} id='HOME' onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
                         <span className={styles.navBar_link_title}>
                             00
                         </span> 
                         &nbsp;
                         HOME
                     </a>
-                    <a className={styles.navBar_link} onClick={handleNavLink} id='DESTINATION'>
+                    <a className={styles.navBar_link} onClick={handleNavLink} id='DESTINATION' onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
                         <span className={styles.navBar_link_title}>
                             01
                         </span> 
                         &nbsp;
                         DESTINATION
                     </a>
-                    <a className={styles.navBar_link} onClick={handleNavLink} id='CREW'>
+                    <a className={styles.navBar_link} onClick={handleNavLink} id='CREW' onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
                         <span className={styles.navBar_link_title}>
                             02
                         </span> 
                         &nbsp;
                         CREW
                     </a>
-                    <a className={styles.navBar_link} onClick={handleNavLink} id='TECHNOLOGY'>
+                    <a className={styles.navBar_link} onClick={handleNavLink} id='TECHNOLOGY' onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
                         <span className={styles.navBar_link_title}>
                             03
                         </span> 

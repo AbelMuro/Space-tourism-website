@@ -59,10 +59,6 @@
     border-bottom: 3px solid white;
 }
 
-.navBar_link:not(.navBar_link_active):hover{
-    border-bottom: 3px solid rgba(255, 255, 255, 0.5)
-}
-
 .navBar_link_title{
     font-family: var(--font-barlow-condensed-bold);
     font-weight: 700;
@@ -144,7 +140,7 @@
     .navBar_menu{
         position: absolute;
         top: 0px;
-        right: -254px;
+        right: -264px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -165,16 +161,12 @@
         height: 31px;
         width: 100%;
     }
-/* find a way to change pseudo elements with media queries*/
+
     .navBar_link_active{
         border-right: 3px solid white;
         border-bottom: 0px;
     }
-
-    .navBar_link:not(.navBar_link_active):hover{
-        border-right: 3px solid rgba(255, 255, 255, 0.5);
-        border-bottom: 0px;
-    }
+    
     .navBar_logo{
         width: 40px;
         margin-left: 24px;

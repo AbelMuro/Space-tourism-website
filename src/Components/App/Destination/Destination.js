@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import useMediaQuery from '../useMediaQuery';
 import styles from './styles.module.css';
 import planetData from './PlanetData';
 import images from './images';
@@ -6,6 +7,8 @@ import images from './images';
 
 /* i need to import useMediaQuery and change the background image for tablet and mobile*/
 function Destination() {
+    const mobile = useMediaQuery('(max-width: 600px)');
+    const tablet = useMediaQuery('(max-width: 768px)');
     const [destination, setDestination] = useState('MOON');
     const [description, setDescription] = useState(planetData[`MOON desc`]);
     const [distance, setDistance] = useState(planetData[`MOON distance`]);
@@ -22,8 +25,13 @@ function Destination() {
 
     useEffect(() => {
         const body = document.querySelector('body');
-        body.style.backgroundImage = `url(${images['backgroundImageDesktop']})`;
-    }, [])
+        if(mobile)
+            body.style.backgroundImage = `url(${images['backgroundImageMobile']})`;
+        else if(tablet)
+            body.style.backgroundImage = `url(${images['backgroundImageTablet']})`;
+        else
+            body.style.backgroundImage = `url(${images['backgroundImageDesktop']})`;
+    }, [tablet, mobile])
 
     useEffect(() => {
         const allButtons = document.querySelectorAll('.' + styles.content_button);
@@ -39,10 +47,7 @@ function Destination() {
             if(buttonID == destination) 
                 button.classList.add(styles.content_button_active);
         })
-
     }, [destination])
-
-
 
     return(
         <main className={styles.container}>
