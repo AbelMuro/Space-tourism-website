@@ -1,0 +1,93 @@
+.container{
+    display: flex;
+    margin: 76px auto 0px auto;
+    gap: 81.43px;
+    width: 1136.07px;
+}
+
+.container_title, .container_title_number{
+    display: flex;
+    justify-content: space-between;
+    font-size: 28px;
+    line-height: 33.6px;
+    letter-spacing: 4.72px;
+}
+
+.container_title{
+    font-family: var(--font-barlow-condensed);
+    font-weight: 400;    
+    color: white;
+    width: 286px;  
+    align-self: flex-start;
+}
+
+.container_title_number{
+    font-family: var(--font-barlow-condensed-bold);
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.content{
+    height: 594px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 154px;
+}
+
+.content_crewImage{
+    width: 568.07px;
+    object-fit: contain;
+}
+
+.content_crewInfo{
+    width: 488px;
+    min-height: 406px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.content_crewInfo_title_one{
+    font-family: var(--font-bellefair);
+    font-size: var(--h4-font-size);
+    font-weight: var(--h4-font-weight);
+    line-height: var(--h4-line-height);
+    color: rgb(255, 255, 255, 0.5);
+}
+
+.content_crewInfo_title_two{
+    font-family: var(--font-bellefair);
+    font-size: var(--h3-font-size);
+    font-weight: var(--h3-font-weight);
+    line-height: var(--h3-line-height);
+    color: white;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.content_crewInfo_desc{
+    width: 444px;
+    font-family: var(--font-barlow);
+    font-size: var(--body-font-size);
+    line-height: var(--body-line-height);
+    font-weight: var(--body-font-weight);
+    color: #D0D6F9;
+    margin-bottom: 105px;
+}
+
+.content_crewInfo_nav{
+    display: flex;
+    justify-content: space-between;
+    width: 132px;
+}
+
+.content_crewInfo_navDot {
+    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+    background-color: rgba(255, 255, 255, 0.17);
+}
