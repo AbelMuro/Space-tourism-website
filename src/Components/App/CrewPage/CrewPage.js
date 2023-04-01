@@ -29,6 +29,35 @@ function CrewPage() {
             body.style.backgroundImage = `url(${images['backgroundImageDesktop']})`;
     }, [tablet, mobile])
 
+    useEffect(() => {
+        const navDots = document.querySelectorAll('.' + styles.content_crewInfo_navDot);
+
+        navDots.forEach((dot) => {
+            dot.style.backgroundColor = '';
+        })
+    })
+
+
+    useEffect(() => {
+        const navDots = document.querySelectorAll('.' + styles.content_crewInfo_navDot);
+
+        navDots.forEach((dot) => {
+            const dotID = dot.id;
+            if(dotID == crewMemberName)
+                dot.style.backgroundColor = 'white';
+        }, [])
+    }, [crewMemberName]);
+
+    useEffect(() => {
+        const navDots = document.querySelectorAll('.' + styles.content_crewInfo_navDot);
+
+        setInterval(() => {
+
+        }, 2000)
+    }, [])
+
+
+
     return(
         <main className={styles.container}>
 
@@ -59,7 +88,7 @@ function CrewPage() {
                     </nav>                
                 </div>
             </section>                
-            <img className={styles.content_crewImage} src={images[`${crewMemberName.replace(' ', '')}`]}/>
+            <img className={styles.content_crewImage} src={images[`${crewMemberName.replace(' ', '')}`]} alt={crewMemberName}/>
         </main>
     )
 }

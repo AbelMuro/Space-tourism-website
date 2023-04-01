@@ -1,19 +1,19 @@
 .container{
     display: flex;
     margin: 76px auto 0px auto;
-    gap: 81.43px;
+    justify-content: space-between;
     width: 1136.07px;
 }
 
 .container_title, .container_title_number{
-    display: flex;
-    justify-content: space-between;
-    font-size: 28px;
-    line-height: 33.6px;
-    letter-spacing: 4.72px;
+    font-size: var(--h5-font-size);
+    line-height: var(--h5-line-height);
+    letter-spacing: var(--h5-letter-spacing);
 }
 
 .container_title{
+    display: flex;
+    justify-content: space-between;
     font-family: var(--font-barlow-condensed);
     font-weight: 400;    
     color: white;
@@ -90,4 +90,94 @@
     width: 15px;
     height: 15px;
     background-color: rgba(255, 255, 255, 0.17);
+    cursor: pointer;
+}
+
+.content_crewInfo_navDot:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+@media(max-width: 1280px){
+    .container{
+        width: 90%;
+        gap: 0px;
+        justify-content: space-between;
+    }
+}
+
+@media(max-width: 1130px){
+    .container_title{
+        width: 204px;
+    }
+    .container_title, .container_title_number{
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 3.38px;
+    }
+
+    .content{
+        width: 40%;
+        height: 500px;
+        gap: 60px;
+    }
+    .content_crewInfo{
+        width: 100%;
+    }
+
+    .content_crewInfo_title_one{
+        font-size: 24px;
+        line-height: 27.5px;
+    }
+
+    .content_crewInfo_title_two{
+        font-size: 40px;
+        line-height: 45.84px;
+        white-space: initial;
+    }
+
+    .content_crewInfo_desc{
+        font-size: 16px;
+        line-height: 28px;
+        width: 100%;
+    }
+    .content_crewImage{
+        height: 572px;
+    }
+}
+
+@media(max-width: 810px){
+    .container{
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .content{
+        width: 100%;
+        height: auto;
+    }
+
+   .content_crewInfo{
+        width: 458px;
+        align-self: center;
+        align-items: center;
+   }
+
+   .content_crewInfo_title_two{
+        margin-bottom: 8px;
+   }   
+
+   .content_crewInfo_desc{
+        width: 458px;
+        height: auto;
+        text-align: center;
+        margin-bottom: 32px;
+   }
+
+
+
+   .content_crewInfo{
+        justify-content: flex-start;
+        gap: 8px;
+        height: 232px; 
+   }
 }
