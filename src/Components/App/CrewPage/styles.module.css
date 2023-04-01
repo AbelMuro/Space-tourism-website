@@ -39,6 +39,7 @@
 .content_crewImage{
     height: 712px;
     object-fit: contain;
+    border-bottom: 1px solid #383B4B;
 }
 
 .content_crewInfo{
@@ -172,12 +173,9 @@
         text-align: center;
         margin-bottom: 32px;
    }
-
-
-
    .content_crewInfo{
         justify-content: flex-start;
         gap: 8px;
-        height: 232px; 
+        min-height: 232px; 
    }
 }
