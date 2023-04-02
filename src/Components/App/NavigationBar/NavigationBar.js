@@ -74,8 +74,26 @@ function NavigationBar() {
             navigate('/destination');
         else if(currentNavLink == 'CREW')
             navigate('/crew');
+        else if(currentNavLink == 'TECHNOLOGY')
+            navigate('/technology');
         
     }, [currentNavLink])
+
+//this will prevent the user from scrolling when the mobile menu is open
+    useEffect(() => {
+        const handleScroll = () => {
+            window.scrollTo(0, 0);
+        }
+
+        if(displayMobileMenu)
+            window.addEventListener('scroll', handleScroll);
+        else
+            window.removeEventListener('scroll', handleScroll)
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }, [displayMobileMenu])
 
 
     return(

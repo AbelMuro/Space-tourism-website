@@ -11,12 +11,19 @@ function CrewPage() {
     const [crewMemberName, setCrewMemberName] = useState('douglas hurley');
     const [crewMemberDesc, setCrewMemberDesc] = useState(crewData['douglas hurley desc']);
 
+
+    const triggerClickEvent = (dot, clickEvent) => {
+        dot.dispatchEvent(clickEvent)
+    }
+
     const handleClick = (e) => {
         const crewMember = e.target.id;
         setCrewMemberTitle(crewData[`${crewMember} title`]);
         setCrewMemberName(crewMember);
         setCrewMemberDesc(crewData[`${crewMember} desc`]);
+        clearInterval(triggerClickEvent);
     }
+
 
     useEffect(() => {
         const body = document.querySelector('body');
@@ -29,6 +36,7 @@ function CrewPage() {
             body.style.backgroundImage = `url(${images['backgroundImageDesktop']})`;
     }, [tablet, mobile])
 
+//removing the white background color from all dots
     useEffect(() => {
         const navDots = document.querySelectorAll('.' + styles.content_crewInfo_navDot);
 
@@ -37,7 +45,7 @@ function CrewPage() {
         })
     })
 
-
+//adding a white background color to the dot that the user clicked on
     useEffect(() => {
         const navDots = document.querySelectorAll('.' + styles.content_crewInfo_navDot);
 
@@ -48,12 +56,10 @@ function CrewPage() {
         }, [])
     }, [crewMemberName]);
 
+//adding an interval function to all dots, this will create a carousel effect
     useEffect(() => {
-        const navDots = document.querySelectorAll('.' + styles.content_crewInfo_navDot);
 
-        setInterval(() => {
 
-        }, 2000)
     }, [])
 
 
@@ -69,7 +75,12 @@ function CrewPage() {
                     </span>
                     MEET YOUR CREW
                 </h5>
-
+                {mobile ? 
+                <div className={styles.imageContainer}>
+                    <img className={styles.content_crewImage} src={images[`${crewMemberName.replace(' ', '')}`]} alt={crewMemberName}/> 
+                </div>
+                
+                : <></>}
                 <div className={styles.content_crewInfo}>
                     <h4 className={styles.content_crewInfo_title_one}>
                         {crewMemberTitle}
@@ -88,7 +99,8 @@ function CrewPage() {
                     </nav>                
                 </div>
             </section>                
-            <img className={styles.content_crewImage} src={images[`${crewMemberName.replace(' ', '')}`]} alt={crewMemberName}/>
+            {mobile ? <></> : 
+            <img className={styles.content_crewImage} src={images[`${crewMemberName.replace(' ', '')}`]} alt={crewMemberName}/>}
         </main>
     )
 }
