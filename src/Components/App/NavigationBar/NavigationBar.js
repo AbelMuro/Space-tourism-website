@@ -109,9 +109,9 @@ function NavigationBar() {
     return(
         <header className={styles.navBar}>
             <img src={icons['logo']} className={styles.navBar_logo} alt='logo'/>
-            {mobile ? <img className={styles.navBar_hamburgerIcon} src={icons['hamburgerIcon']} onClick={handleMobileMenu}/> : <></>}
+            {mobile ? <img className={styles.navBar_hamburgerIcon} src={icons['hamburgerIcon']} onClick={handleMobileMenu} alt='mobile menu icon'/> : <></>}
             <nav className={styles.navBar_menu}>
-                    {mobile ? <img className={styles.navBar_closeIcon} src={icons['closeIcon']} onClick={handleMobileMenu}/> : <></>}
+                    {mobile ? <img className={styles.navBar_closeIcon} src={icons['closeIcon']} onClick={handleMobileMenu} alt='mobile menu icon'/> : <></>}
                     <hr className={styles.navBar_line}/>
                     <a className={styles.navBar_link} onClick={handleNavLink} id='/' onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
                         <span className={styles.navBar_link_title}>

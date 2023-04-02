@@ -117,7 +117,7 @@ function TechnologyPage() {
                         </p>
                     </div>  
                 </div> 
-                <img className={styles.content_image}/>
+                <img className={styles.content_image} alt={deviceName}/>
             </section>
         </main>
     )

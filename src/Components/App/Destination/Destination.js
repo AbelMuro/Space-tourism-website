@@ -77,7 +77,7 @@ function Destination() {
                 PICK YOUR DESTINATION
             </h5>
             <section className={styles.content}>
-                <img className={styles.content_planet} src={images[destination]}/>
+                <img className={styles.content_planet} src={images[destination]} alt={destination}/>
                 <div className={styles.content_planetInfo}>
                     <nav className={styles.content_buttons}>
                         <button className={styles.content_button} onClick={handleDestination} onMouseEnter={handleEnter} id='MOON'>
