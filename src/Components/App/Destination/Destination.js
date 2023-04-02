@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import useMediaQuery from '../useMediaQuery';
 import styles from './styles.module.css';
 import planetData from './PlanetData';
@@ -13,6 +13,7 @@ function Destination() {
     const [description, setDescription] = useState(planetData[`MOON desc`]);
     const [distance, setDistance] = useState(planetData[`MOON distance`]);
     const [travelTime, setTravelTime] = useState(planetData[`MOON travel time`]);
+    const allTimeouts = useRef([])
 
 
     const handleDestination = (e) => {
@@ -23,6 +24,22 @@ function Destination() {
         setTravelTime(planetData[`${currentDest} travel time`]);
     }
 
+    const handleEnter = () => {
+        allTimeouts.current.forEach((timeout) => {
+            clearTimeout(timeout);
+        })
+    }
+
+    useEffect(() => {
+        const allButtons = document.querySelectorAll('.' + styles.content_button);
+        allButtons.forEach((button, i) => {
+            allTimeouts.current[i] = setTimeout(() => {
+                button.click();
+            }, i * 3000)
+        })
+    }, [])
+
+//this will change the background image according to the viewport size (mobile, tablet, or desktop)
     useEffect(() => {
         const body = document.querySelector('body');
         if(mobile)
@@ -33,6 +50,7 @@ function Destination() {
             body.style.backgroundImage = `url(${images['backgroundImageDesktop']})`;
     }, [tablet, mobile])
 
+//removing the class that adds a white bottom border to ALL buttons
     useEffect(() => {
         const allButtons = document.querySelectorAll('.' + styles.content_button);
         allButtons.forEach((button) => {
@@ -40,6 +58,7 @@ function Destination() {
         })
     }, [destination]);
 
+//adding the class that adds a white bottom border to the button that the user selected
     useEffect(() => {
         const allButtons = document.querySelectorAll('.' + styles.content_button);
         allButtons.forEach((button) => {
@@ -61,16 +80,16 @@ function Destination() {
                 <img className={styles.content_planet} src={images[destination]}/>
                 <div className={styles.content_planetInfo}>
                     <nav className={styles.content_buttons}>
-                        <button className={styles.content_button} onClick={handleDestination} id='MOON'>
+                        <button className={styles.content_button} onClick={handleDestination} onMouseEnter={handleEnter} id='MOON'>
                             MOON
                         </button>
-                        <button className={styles.content_button} onClick={handleDestination} id='MARS'>
+                        <button className={styles.content_button} onClick={handleDestination} onMouseEnter={handleEnter} id='MARS'>
                             MARS
                         </button>
-                        <button className={styles.content_button} onClick={handleDestination} id='EUROPA'>
+                        <button className={styles.content_button} onClick={handleDestination} onMouseEnter={handleEnter} id='EUROPA'>
                             EUROPA
                         </button>
-                        <button className={styles.content_button} onClick={handleDestination} id='TITAN'>
+                        <button className={styles.content_button} onClick={handleDestination} onMouseEnter={handleEnter} id='TITAN'>
                             TITAN
                         </button>
                     </nav>
