@@ -64,6 +64,8 @@ function TechnologyPage() {
         })
     }, [deviceName])
 
+
+    //trying to figure out how to to an auto carousel
     useEffect(() => {
         console.log(cancelCarousel)
 
