@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import useMediaQuery from '../useMediaQuery';
 import styles from './styles.module.css';
 import images from './images';
@@ -7,15 +7,34 @@ import technologyData from './TechnologyData';
 function TechnologyPage() {
     const [deviceName, setDeviceName] = useState('launch vehicle');
     const [desc, setDesc] = useState(technologyData['launch vehicle']);
-    const [cancelCarousel, setCancelCarousel] = useState(false)
+    const allTimeouts = useRef([]);
     const mobile = useMediaQuery('(max-width: 600px)');
     const tablet = useMediaQuery('(max-width: 768px)');
+
+
+    const handleEnter = () => {
+        allTimeouts.current.forEach((timeout) => {
+            clearTimeout(timeout);
+        })
+    }
 
     const handleClick = (e) => {
         const device = e.target.id;
         setDeviceName(device);
         setDesc(technologyData[device]);
     }
+
+    //adding a setTimeout() to all buttons to trigger a carousel effect
+    useEffect(() => {
+        const allDots = document.querySelectorAll('.' + styles.content_info_button);
+
+        allDots.forEach((dot, i) => {
+            allTimeouts.current[i] = setTimeout(() => {
+                dot.click();
+            }, i * 3000)
+        })
+
+    }, [])
 
 //this will change the background image for mobile, tablet and desktop
     useEffect(() => {
@@ -65,24 +84,6 @@ function TechnologyPage() {
     }, [deviceName])
 
 
-    //trying to figure out how to to an auto carousel
-    useEffect(() => {
-        console.log(cancelCarousel)
-
-        const handleChange = (e) => {
-            console.log('im here');
-            const allButtons = document.querySelectorAll('.' + content_info_button);
-
-        }
-
-
-            window.addEventListener('load', handleChange);
-
-        return () => {
-            window.removeEventListener('load', handleChange);
-        }
-    }, [cancelCarousel])
-
     return(
         <main className={styles.container}>
             <h5 className={styles.container_title}>
@@ -94,13 +95,13 @@ function TechnologyPage() {
             <section className={styles.content}>
                 <div className={styles.content_info}>
                     <div className={styles.content_info_buttons}>
-                        <button className={styles.content_info_button} onClick={handleClick} id='launch vehicle'>
+                        <button className={styles.content_info_button} onClick={handleClick} onMouseEnter={handleEnter} id='launch vehicle'>
                             1
                         </button>
-                        <button className={styles.content_info_button} onClick={handleClick} id='spaceport'>
+                        <button className={styles.content_info_button} onClick={handleClick} onMouseEnter={handleEnter} id='spaceport'>
                             2
                         </button>
-                        <button className={styles.content_info_button} onClick={handleClick} id='space capsule'>
+                        <button className={styles.content_info_button} onClick={handleClick} onMouseEnter={handleEnter} id='space capsule'>
                             3
                         </button>
                     </div>  

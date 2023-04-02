@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import useMediaQuery from '../useMediaQuery';
 import styles from './styles.module.css';
 import images from './images';
@@ -10,19 +10,33 @@ function CrewPage() {
     const [crewMemberTitle, setCrewMemberTitle] = useState(crewData['douglas hurley title']);
     const [crewMemberName, setCrewMemberName] = useState('douglas hurley');
     const [crewMemberDesc, setCrewMemberDesc] = useState(crewData['douglas hurley desc']);
+    const allTimeouts = useRef([]);
 
 
-    const triggerClickEvent = (dot, clickEvent) => {
-        dot.dispatchEvent(clickEvent)
+    const handleEnter = () => {
+        allTimeouts.current.forEach((timeout) => {
+            clearTimeout(timeout);
+        })
     }
 
-    const handleClick = (e) => {
+    const handleDotClick = (e) => {
         const crewMember = e.target.id;
+        setCrewMemberName(crewMember);        
         setCrewMemberTitle(crewData[`${crewMember} title`]);
-        setCrewMemberName(crewMember);
         setCrewMemberDesc(crewData[`${crewMember} desc`]);
-        clearInterval(triggerClickEvent);
     }
+
+
+    useEffect(() => {
+        const allDots = document.querySelectorAll('.' + styles.content_crewInfo_navDot);
+
+        allDots.forEach((dot, i) => {
+            allTimeouts.current[i] = setTimeout(() => {
+                dot.click();
+            }, i * 3000)
+        })
+
+    }, [])
 
 
     useEffect(() => {
@@ -43,7 +57,7 @@ function CrewPage() {
         navDots.forEach((dot) => {
             dot.style.backgroundColor = '';
         })
-    })
+    }, [crewMemberName])
 
 //adding a white background color to the dot that the user clicked on
     useEffect(() => {
@@ -53,20 +67,12 @@ function CrewPage() {
             const dotID = dot.id;
             if(dotID == crewMemberName)
                 dot.style.backgroundColor = 'white';
-        }, [])
+        })
     }, [crewMemberName]);
-
-//adding an interval function to all dots, this will create a carousel effect
-    useEffect(() => {
-
-
-    }, [])
-
 
 
     return(
         <main className={styles.container}>
-
             <section className={styles.content}>
 
                 <h5 className={styles.container_title}>
@@ -92,10 +98,10 @@ function CrewPage() {
                         {crewMemberDesc}
                     </p>    
                     <nav className={styles.content_crewInfo_nav}>
-                        <div className={styles.content_crewInfo_navDot} onClick={handleClick} id='douglas hurley'></div>
-                        <div className={styles.content_crewInfo_navDot} onClick={handleClick} id='mark shuttleworth'></div>
-                        <div className={styles.content_crewInfo_navDot} onClick={handleClick} id='victor glover'></div>
-                        <div className={styles.content_crewInfo_navDot} onClick={handleClick} id='anousheh ansari'></div>
+                        <div className={styles.content_crewInfo_navDot} onClick={handleDotClick} onMouseEnter={handleEnter} id='douglas hurley'></div>
+                        <div className={styles.content_crewInfo_navDot} onClick={handleDotClick} onMouseEnter={handleEnter} id='mark shuttleworth'></div>
+                        <div className={styles.content_crewInfo_navDot} onClick={handleDotClick} onMouseEnter={handleEnter} id='victor glover'></div>
+                        <div className={styles.content_crewInfo_navDot} onClick={handleDotClick} onMouseEnter={handleEnter} id='anousheh ansari'></div>
                     </nav>                
                 </div>
             </section>                
