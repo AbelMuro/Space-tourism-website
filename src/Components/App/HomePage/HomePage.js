@@ -1,12 +1,18 @@
 import React, {useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import useMediaQuery from '../useMediaQuery';
 import styles from './styles.module.css';
 import images from './images'
 
 
 function HomePage() {
+    const navigate = useNavigate();
     const tablet = useMediaQuery('(max-width: 768px)');
-    const mobile = useMediaQuery('(max-width: 600px)')
+    const mobile = useMediaQuery('(max-width: 600px)');
+
+    const handleClick = () => {
+        navigate('/destination');
+    }
 
     useEffect(() => {
         const body = document.querySelector('body');
@@ -35,7 +41,7 @@ function HomePage() {
                     Well sit back, and relax because we’ll give you a truly out of this world experience!
                 </p>
             </section>
-            <button className={styles.home_exploreButton}>
+            <button className={styles.home_exploreButton} onClick={handleClick}>
                 EXPLORE
             </button>
         </main>

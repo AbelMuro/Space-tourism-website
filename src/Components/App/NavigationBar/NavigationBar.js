@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 import useMediaQuery from '../useMediaQuery';
 import styles from './styles.module.css';
 import icons from './icons';
 
 function NavigationBar() {
     const navigate = useNavigate();
+    const {pathname} = useLocation();
     const mobile = useMediaQuery('(max-width: 600px)');
-    const [currentNavLink, setCurrentNavLink] = useState('HOME');
+    const [currentNavLink, setCurrentNavLink] = useState('/');
     const [displayMobileMenu, setDisplayMobileMenu] = useState(false);
 
     const handleNavLink = (e) => {
@@ -30,6 +31,15 @@ function NavigationBar() {
         const navLink = e.target;
         navLink.style[mobile ? 'borderRight'  : 'borderBottom'] = '';
     }
+
+//pathname is a variable that comes from useLocation, 
+//if the user clicks on the explore button in home page
+//then the user will be taken to the /destination page
+//this useEffect will update the nav bar with the correct styling 
+//when that happens
+    useEffect(() => {
+        setCurrentNavLink(pathname);
+    }, [pathname])
 
 //this will 'slide in' the mobile menu when the user clicks on the hamburger icon
     useEffect(() => {
@@ -68,13 +78,13 @@ function NavigationBar() {
 
 //navigating to the page that the user requested
     useEffect(() => {
-        if(currentNavLink == 'HOME')
+        if(currentNavLink == '/')
             navigate('/');
-        else if(currentNavLink == 'DESTINATION')
+        else if(currentNavLink == '/destination')
             navigate('/destination');
-        else if(currentNavLink == 'CREW')
+        else if(currentNavLink == '/crew')
             navigate('/crew');
-        else if(currentNavLink == 'TECHNOLOGY')
+        else if(currentNavLink == '/technology')
             navigate('/technology');
         
     }, [currentNavLink])
@@ -103,28 +113,28 @@ function NavigationBar() {
             <nav className={styles.navBar_menu}>
                     {mobile ? <img className={styles.navBar_closeIcon} src={icons['closeIcon']} onClick={handleMobileMenu}/> : <></>}
                     <hr className={styles.navBar_line}/>
-                    <a className={styles.navBar_link} onClick={handleNavLink} id='HOME' onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+                    <a className={styles.navBar_link} onClick={handleNavLink} id='/' onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
                         <span className={styles.navBar_link_title}>
                             00
                         </span> 
                         &nbsp;
                         HOME
                     </a>
-                    <a className={styles.navBar_link} onClick={handleNavLink} id='DESTINATION' onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+                    <a className={styles.navBar_link} onClick={handleNavLink} id='/destination' onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
                         <span className={styles.navBar_link_title}>
                             01
                         </span> 
                         &nbsp;
                         DESTINATION
                     </a>
-                    <a className={styles.navBar_link} onClick={handleNavLink} id='CREW' onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+                    <a className={styles.navBar_link} onClick={handleNavLink} id='/crew' onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
                         <span className={styles.navBar_link_title}>
                             02
                         </span> 
                         &nbsp;
                         CREW
                     </a>
-                    <a className={styles.navBar_link} onClick={handleNavLink} id='TECHNOLOGY' onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+                    <a className={styles.navBar_link} onClick={handleNavLink} id='/technology' onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
                         <span className={styles.navBar_link_title}>
                             03
                         </span> 
